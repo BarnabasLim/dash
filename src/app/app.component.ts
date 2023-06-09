@@ -13,6 +13,11 @@ export class AppComponent {
   }
   title = 'dash';
 
+  toggle_base64_icon=true;
+  toggle_svg_icon=true;
+  toggle_other_url_icon=true;
+
+
   public saveAsPdf=()=>{
     let new_document:Document=document.cloneNode(true) as Document;
     new_document.body.innerHTML=""
