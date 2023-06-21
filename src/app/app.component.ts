@@ -11,7 +11,6 @@ export class AppComponent {
   constructor(
     public _cd:ChangeDetectorRef
   ){
-
   }
   title = 'dash';
 
