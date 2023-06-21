@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+
+import { ChangeDetectorRef, Component } from '@angular/core';
 import html2pdf from 'html2pdf.js';
 import moment from 'moment';
 @Component({
@@ -8,6 +9,7 @@ import moment from 'moment';
 })
 export class AppComponent {
   constructor(
+    public _cd:ChangeDetectorRef
   ){
 
   }
@@ -53,7 +55,10 @@ export class AppComponent {
     console.log(options)
 
     html2pdf().set(options).from(new_document.documentElement).save().catch((e)=>{
-      this.console_val+=e
+      setTimeout(()=>{
+        this.console_val+=e
+        this._cd.detectChanges()
+      },200)
     }
     )
   }
