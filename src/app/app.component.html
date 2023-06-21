@@ -361,24 +361,27 @@
       base64 {{toggle_base64_icon}}
       <img *ngIf="toggle_base64_icon" class="base_64"/>
   </div>
-  <div (click)="toggle_other_url_icon=!toggle_other_url_icon" >
-      link {{toggle_other_url_icon}}
-      <svg *ngIf="toggle_other_url_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1226 1481">
+  <div (click)="toggle_path_icon=!toggle_path_icon" >
+      link {{toggle_path_icon}}
+      <svg *ngIf="toggle_path_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1226 1481">
         <path d="M0 1394V87C0 46.3 13.3 19.8 40 7.5 66.7-4.8 98.7.3 136 23l1034 634c37.3 22.7 56 50.3 56 83s-18.7 60.3-56 83L136 1458c-37.3 22.7-69.3 27.8-96 15.5-26.7-12.3-40-38.8-40-79.5z" fill="red"/>
        </svg>
   </div>
-  <div (click)="toggle_base64_icon=!toggle_base64_icon" >
-      base64 {{toggle_base64_icon}}
-      <img *ngIf="toggle_base64_icon" class="base_64_svg"/>
-</div>
+  <div (click)="toggle_base64_svg_icon=!toggle_base64_svg_icon" >
+      base64 {{toggle_base64_svg_icon}}
+      <img *ngIf="toggle_base64_svg_icon" class="base_64_svg"/>
+  </div>
+  <div>
+    {{console_val}}
+  </div>
 
 
   <div class="card-container">
-    <a class="card" target="_blank" rel="noopener" href="" (click)="saveAsPdf()">
+    <button class="card" rel="noopener" href="" (click)="saveAsPdf()">
       <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
       <span>Print This page</span>
       <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>    
-    </a>
+    </button>
 
     <a class="card" target="_blank" rel="noopener" href="https://angular.io/tutorial">
       <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>

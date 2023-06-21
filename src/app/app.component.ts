@@ -16,9 +16,12 @@ export class AppComponent {
   toggle_base64_icon=true;
   toggle_svg_icon=true;
   toggle_other_url_icon=true;
-
+  toggle_path_icon=true;
+  toggle_base64_svg_icon=true;
+  console_val=""
 
   public saveAsPdf=()=>{
+    this.console_val=""
     let new_document:Document=document.cloneNode(true) as Document;
     new_document.body.innerHTML=""
     new_document.body.innerHTML=document.body.innerHTML;
@@ -49,6 +52,9 @@ export class AppComponent {
     new_document.body.style.borderStyle='solid'
     console.log(options)
 
-    html2pdf().set(options).from(new_document.documentElement).save()
+    html2pdf().set(options).from(new_document.documentElement).save().catch((e)=>{
+      this.console_val+=e
+    }
+    )
   }
 }
