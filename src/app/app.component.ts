@@ -20,6 +20,7 @@ export class AppComponent {
   toggle_other_url_icon=true;
   toggle_path_icon=true;
   toggle_base64_svg_icon=true;
+  toggle_base64_svg_link_icon=true
   console_val=""
 
   public saveAsPdf=()=>{

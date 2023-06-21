@@ -371,6 +371,10 @@
     toggle_base64_svg_icon {{toggle_base64_svg_icon}}
       <img *ngIf="toggle_base64_svg_icon" class="base_64_svg"/>
   </div>
+  <div (click)="toggle_base64_svg_icon=!toggle_base64_svg_link_icon" >
+    toggle_base64_svg_link_icon {{toggle_base64_svg_link_icon}}
+      <img *ngIf="toggle_base64_svg_link_icon" class="base_64_svg_link"/>
+  </div>
   <div>
     {{console_val}}
   </div>
