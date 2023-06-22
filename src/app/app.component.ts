@@ -22,7 +22,7 @@ export class AppComponent {
   toggle_base64_svg_link_icon=true
   console_val=""
 
-  public saveAsPdf=()=>{
+  public saveAsPdf=(type:string='normal')=>{
     this.console_val=""
     let new_document:Document=document.cloneNode(true) as Document;
     new_document.body.innerHTML=""
@@ -54,12 +54,43 @@ export class AppComponent {
     new_document.body.style.borderStyle='solid'
     console.log(options)
 
-    html2pdf().set(options).from(new_document.documentElement).save().catch((e)=>{
-      setTimeout(()=>{
-        this.console_val+=e
-        this._cd.detectChanges()
-      },200)
+    
+    switch (type){
+      case 'normal':
+        html2pdf().set(options).from(new_document.documentElement).save().catch((e)=>{
+            setTimeout(()=>{
+              this.console_val+=e
+              this._cd.detectChanges()
+            },200)
+          }
+        )
+        break;
+      case 'dataURL':
+        html2pdf().set(options).from(new_document.documentElement).toPdf().get('pdf').then((pdf)=>{
+          let blobPDF=new Blob([pdf.output('blob')],{type:'application/octet-stream'})
+          let reader=new FileReader();
+          reader.readAsDataURL(blobPDF);
+          reader.onloadend=()=>{
+            let base64data=reader.result;
+            this.console_val+="using data url: "+ base64data+"/n"
+            let anchor=document.createElement('a');
+            anchor.href=""+base64data;
+            anchor.target="_blank";
+            anchor.download=options.filename+'.pdf';
+            anchor.click();
+            anchor.remove();
+            this._cd.detectChanges()
+          }
+    
+        }).catch((e)=>{
+          setTimeout(()=>{
+            this.console_val+=e
+            this._cd.detectChanges()
+          },200)
+        })
+        break;
     }
-    )
+
+
   }
 }
